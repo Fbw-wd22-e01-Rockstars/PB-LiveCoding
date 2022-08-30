@@ -12,9 +12,11 @@ import Products from "./pages/Products"
 import Product from "./pages/Product"
 import ContactUs from "./pages/ContactUs"
 import NotFound from "./pages/NotFound"
+import Container from './ContextAPI/Container';
 
 function App() {
   return (
+    <Container> 
     <div className="App">
       <h1>E-Commerce Site</h1>
       <Navbar/>
@@ -33,6 +35,7 @@ function App() {
 
 
     </div>
+    </Container>
   );
 }
 

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { MyContext } from "../ContextAPI/context";
 
 export default function Navbar() {
+  const { state } = useContext(MyContext)
   return (
     <nav>
       <div>
@@ -22,7 +24,7 @@ export default function Navbar() {
           <NavLink to="/products">Products</NavLink>
         </li>
         <li>
-          <NavLink to="/cart">Cart</NavLink>
+          <NavLink to="/cart">Cart <sup style={{display:"inline-block", width:"20px",height:"20px",color:"white",fontSize:"16px",textAlign:"center",padding:"5px",borderRadius:"10px",backgroundColor:"black"}}>{state.cart.length}</sup> </NavLink>
         </li>
         <li>
           <NavLink to="contactus">Contact Us</NavLink>

@@ -1,26 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ReactStars from "react-rating-stars-component"
+import { MyContext } from "../ContextAPI/context";
 
 
 export default function Products() {
-  const [data, setData] = useState([]);
+
+  const {state,dispatch} = useContext(MyContext)
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((result) => {
-        setData(result);
+        dispatch({ type:"products", payload:result })
       });
   }, []);
 
-  console.log("products page render ......");
 
   return (
     <div>
       <h1>Projects Page</h1>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
-        {data.map((product) => {
+        {state.products.map((product) => {
           return (
             <div
               style={{
@@ -46,7 +47,7 @@ export default function Products() {
                size={24}
                edit={false}
                /> 
-              <button>add to cart</button>
+              <button onClick={()=>dispatch({type:"addtocart", payload:product})}>add to cart</button>
 
             </div>
           );
