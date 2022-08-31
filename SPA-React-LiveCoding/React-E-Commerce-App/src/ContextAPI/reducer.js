@@ -22,6 +22,10 @@ export default function reducer(state, action) {
           ...state,
           cart: state.cart.filter((item) => item.id !== action.payload.id),
         };
+      case "addRegisterUser":
+        return {...state, registeredUsers: [...state.registeredUsers,action.payload]}
+      case "loginSuccess":
+        return {...state, user:action.payload}
       default:
         return state;
     }
@@ -32,5 +36,6 @@ export default function reducer(state, action) {
     products: [],
     user: null,
     cart: [],
+    registeredUsers:[]
   };
   

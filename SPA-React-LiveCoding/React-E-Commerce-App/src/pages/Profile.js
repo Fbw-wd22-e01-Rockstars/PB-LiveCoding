@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { MyContext } from "../ContextAPI/context";
+import { Navigate } from "react-router-dom";
 
 export default function Profile() {
-  return (
-    <div><h1>Profile Page</h1></div>
-  )
+  const { state } = useContext(MyContext);
+  if (state.user) {
+    return (
+      <div>
+        <h1>Profile Page</h1>
+      </div>
+    );
+  } else {
+    return <Navigate to="/login" />;
+  }
 }
